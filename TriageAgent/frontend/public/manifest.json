@@ -1,0 +1,18 @@
+{
+  "name": "TriageAgent - AI-Powered Communication Triage",
+  "short_name": "TriageAgent",
+  "description": "AI-powered message classification and triage for non-profit organizations",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

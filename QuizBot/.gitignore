@@ -1,0 +1,15 @@
+backend/.env
+backend/venv/
+backend/firebase-credentials.json
+backend/quizbot.db
+backend/data/vector_store/
+
+frontend/.env
+frontend/node_modules/
+
+.venv/
+.vscode/
+
+#Large media and generated file
+*.mp4
+*.sqlite3

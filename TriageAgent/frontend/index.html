@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>TriageAgent - AI-Powered Non-Profit Communication Triage</title>
+    <meta name="title" content="TriageAgent - AI-Powered Non-Profit Communication Triage" />
+    <meta name="description" content="Automate your non-profit communication triage with intelligent AI classification, entity extraction, and response generation. Process messages 10-20x faster." />
+    <meta name="keywords" content="AI, Triage, Non-Profit, Communication, Automation, Machine Learning, NLP" />
+    <meta name="author" content="TriageAgent Team" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://triageagent.com/" />
+    <meta property="og:title" content="TriageAgent - AI-Powered Communication Triage" />
+    <meta property="og:description" content="Automate your non-profit communication triage with AI. Process messages 10-20x faster." />
+    <meta property="og:image" content="/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://triageagent.com/" />
+    <meta property="twitter:title" content="TriageAgent - AI-Powered Communication Triage" />
+    <meta property="twitter:description" content="Automate your non-profit communication triage with AI. Process messages 10-20x faster." />
+    <meta property="twitter:image" content="/twitter-image.png" />
+    
+    <!-- Theme Color (Supported by Chrome, Safari, Edge - ignored by Firefox) -->
+    <meta name="theme-color" content="#3b82f6" />
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Prevent Flash of Unstyled Content -->
+    <style>
+      /* Minimal inline styles for initial render */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: #f9fafb;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Loading spinner */
+      .app-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      
+      .app-loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- App Root -->
+    <div id="root">
+      <!-- Loading Spinner (shown until React hydrates) -->
+      <div class="app-loading">
+        <div class="app-loading-spinner"></div>
+      </div>
+    </div>
+    
+    <!-- Main Script -->
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Optional: Analytics Script -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
+  </body>
+</html>
