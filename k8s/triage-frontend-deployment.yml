@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: triage-frontend
+  labels:
+    app: triage-frontend
+    platform: supporthub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: triage-frontend
+  template:
+    metadata:
+      labels:
+        app: triage-frontend
+    spec:
+      containers:
+        - name: triage-frontend
+          image: supporthub-triage-frontend:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"

@@ -1,0 +1,85 @@
+version: "3.9"
+
+services:
+
+  triage-backend:
+    build:
+      context: ./TriageAgent/backend
+      dockerfile: Dockerfile
+    container_name: triage-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${TRIAGE_GEMINI_API_KEY}
+      - JWT_SECRET=${TRIAGE_JWT_SECRET}
+      - FRONTEND_URL=${TRIAGE_FRONTEND_URL}
+    volumes:
+      - ./TriageAgent/backend/firebase-credentials.json:/app/firebase-credentials.json:ro
+    restart: unless-stopped
+    networks:
+      - supporthub-network
+
+  triage-frontend:
+    build:
+      context: ./TriageAgent/frontend
+      dockerfile: Dockerfile
+    container_name: triage-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - triage-backend
+    restart: unless-stopped
+    networks:
+      - supporthub-network
+
+  quiz-backend:
+    build:
+      context: ./QuizBot/backend
+      dockerfile: Dockerfile
+    container_name: quiz-backend
+    ports:
+      - "8001:8001"
+    environment:
+      - GEMINI_API_KEY=${QUIZ_GEMINI_API_KEY}
+      - JWT_SECRET=${QUIZ_JWT_SECRET}
+      - FRONTEND_URL=${QUIZ_FRONTEND_URL}
+    volumes:
+      - ./QuizBot/backend/firebase-credentials.json:/app/firebase-credentials.json:ro
+      - ./QuizBot/backend/data:/app/data
+      - ./QuizBot/backend/quizbot.db:/app/quizbot.db
+    restart: unless-stopped
+    networks:
+      - supporthub-network
+
+  quiz-frontend:
+    build:
+      context: ./QuizBot/frontend
+      dockerfile: Dockerfile
+    container_name: quiz-frontend
+    ports:
+      - "3001:3001"
+    depends_on:
+      - quiz-backend
+    restart: unless-stopped
+    networks:
+      - supporthub-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: supporthub-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - triage-frontend
+      - triage-backend
+      - quiz-frontend
+      - quiz-backend
+    restart: unless-stopped
+    networks:
+      - supporthub-network
+
+networks:
+  supporthub-network:
+    driver: bridge

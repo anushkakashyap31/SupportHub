@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: triage-backend
+  labels:
+    app: triage-backend
+    platform: supporthub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: triage-backend
+  template:
+    metadata:
+      labels:
+        app: triage-backend
+    spec:
+      containers:
+        - name: triage-backend
+          image: supporthub-triage-backend:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: triage-secrets
+                  key: gemini-api-key
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: triage-secrets
+                  key: jwt-secret
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

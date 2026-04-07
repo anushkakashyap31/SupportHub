@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: triage-frontend
+  labels:
+    platform: supporthub
+spec:
+  selector:
+    app: triage-frontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quiz-frontend
+  labels:
+    app: quiz-frontend
+    platform: supporthub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quiz-frontend
+  template:
+    metadata:
+      labels:
+        app: quiz-frontend
+    spec:
+      containers:
+        - name: quiz-frontend
+          image: supporthub-quiz-frontend:latest
+          ports:
+            - containerPort: 3001
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"

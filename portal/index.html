@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SupportHub — AI-Powered Microservices Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#060912;
+  --bg2:#0a0f1e;
+  --bg3:#0d1526;
+  --surface:#111d35;
+  --surface2:#162340;
+  --border:rgba(99,179,237,0.1);
+  --border2:rgba(99,179,237,0.2);
+  --text:#e8edf5;
+  --muted:#8aa0c8;
+  --dim:#4a5f80;
+  --teal:#0fd4b8;
+  --teal2:#0aad97;
+  --amber:#f5a623;
+  --amber2:#d48c1a;
+  --blue:#3b82f6;
+  --blue2:#06b6d4;
+  --purple:#7c6ff7;
+  --green:#22d37e;
+  --font-head:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none}
+
+/* ── CURSOR ── */
+.cursor{position:fixed;width:10px;height:10px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s;mix-blend-mode:screen}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(15,212,184,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left 0.1s ease,top 0.1s ease}
+
+/* ── GRID BG ── */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(99,179,237,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,179,237,0.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0}
+.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.orb1{width:700px;height:700px;background:rgba(15,212,184,0.06);top:-200px;right:-150px}
+.orb2{width:500px;height:500px;background:rgba(245,166,35,0.05);bottom:-100px;left:-150px}
+.orb3{width:400px;height:400px;background:rgba(59,130,246,0.05);top:40%;left:50%;transform:translate(-50%,-50%)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,9,18,0.88);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-logo-mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--teal2));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:16px;color:#000;flex-shrink:0}
+.nav-logo-text{font-family:var(--font-head);font-weight:700;font-size:20px;letter-spacing:-0.02em;color:var(--text)}
+.nav-version{font-family:var(--font-mono);font-size:10px;color:var(--teal);border:1px solid rgba(15,212,184,0.25);padding:3px 9px;border-radius:20px;background:rgba(15,212,184,0.06);letter-spacing:0.06em}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;gap:10px}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:9px;font-family:var(--font-head);font-size:13px;font-weight:600;text-decoration:none;cursor:none;transition:all 0.2s}
+.nav-btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.nav-btn-ghost:hover{color:var(--text);border-color:var(--border2)}
+.nav-btn-teal{background:var(--teal);color:#000;border:none}
+.nav-btn-teal:hover{background:var(--teal2);transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 40px 70px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;padding:7px 18px;border-radius:24px;border:1px solid rgba(15,212,184,0.22);background:rgba(15,212,184,0.05);margin-bottom:32px;animation:fadeUp 0.7s ease both}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+
+/* Hero title — SupportHub */
+.hero-title{font-family:var(--font-head);font-size:clamp(64px,10vw,110px);font-weight:800;line-height:1.0;letter-spacing:-0.045em;margin-bottom:16px;animation:fadeUp 0.7s 0.1s ease both;white-space:nowrap}
+.hero-title .word-support{color:var(--text)}
+.hero-title .word-hub{background:linear-gradient(90deg,var(--teal) 0%,var(--blue2) 45%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.hero-tagline{font-family:var(--font-head);font-size:clamp(17px,2.2vw,24px);font-weight:400;color:var(--muted);letter-spacing:-0.01em;margin-bottom:24px;animation:fadeUp 0.7s 0.15s ease both}
+.hero-tagline em{color:var(--text);font-style:normal;font-weight:600}
+
+.hero-sub{font-size:clamp(15px,1.6vw,17px);color:var(--muted);max-width:660px;margin:0 auto 44px;font-weight:300;line-height:1.8;animation:fadeUp 0.7s 0.2s ease both}
+
+.hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:72px;animation:fadeUp 0.7s 0.3s ease both}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:10px;background:var(--teal);color:#000;font-family:var(--font-head);font-weight:700;font-size:15px;text-decoration:none;border:none;cursor:none;transition:all 0.2s}
+.btn-primary:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(15,212,184,0.25)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;background:transparent;color:var(--text);font-family:var(--font-head);font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--border2);cursor:none;transition:all 0.2s}
+.btn-ghost:hover{border-color:var(--dim);background:var(--surface)}
+
+.stats-row{display:flex;gap:0;border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden;animation:fadeUp 0.7s 0.4s ease both}
+.stat{flex:1;padding:22px 24px;text-align:center;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-val{font-family:var(--font-head);font-size:26px;font-weight:800;letter-spacing:-0.03em;display:block}
+.stat-val.t{color:var(--teal)}.stat-val.a{color:var(--amber)}.stat-val.p{color:var(--purple)}.stat-val.b{color:var(--blue2)}
+.stat-lbl{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:100px 40px}
+.container{max-width:1100px;margin:0 auto}
+.sec-label{font-family:var(--font-mono);font-size:11px;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px}
+.sec-title{font-family:var(--font-head);font-weight:700;font-size:clamp(32px,4vw,48px);letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px}
+.sec-sub{color:var(--muted);font-size:16px;max-width:600px;font-weight:300;line-height:1.75}
+
+/* ── SERVICES ── */
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:54px}
+.svc-card{border-radius:18px;padding:40px;position:relative;overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:all 0.3s;text-decoration:none;color:inherit;display:block}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.svc-card.tc::before{background:linear-gradient(90deg,transparent,var(--teal),transparent)}
+.svc-card.ac::before{background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.svc-card:hover{transform:translateY(-6px)}
+.svc-card.tc:hover{border-color:rgba(15,212,184,0.35);box-shadow:0 20px 60px rgba(15,212,184,0.08)}
+.svc-card.ac:hover{border-color:rgba(245,166,35,0.35);box-shadow:0 20px 60px rgba(245,166,35,0.08)}
+.svc-glow{position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:0;transition:opacity 0.3s}
+.svc-card.tc .svc-glow{background:rgba(15,212,184,0.1)}.svc-card.ac .svc-glow{background:rgba(245,166,35,0.1)}
+.svc-card:hover .svc-glow{opacity:1}
+.svc-port{position:absolute;top:20px;right:20px;font-family:var(--font-mono);font-size:10px;padding:3px 9px;border-radius:6px;letter-spacing:0.04em}
+.svc-card.tc .svc-port{background:rgba(15,212,184,0.1);color:var(--teal);border:1px solid rgba(15,212,184,0.2)}
+.svc-card.ac .svc-port{background:rgba(245,166,35,0.1);color:var(--amber);border:1px solid rgba(245,166,35,0.2)}
+.svc-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:22px}
+.svc-card.tc .svc-icon{background:rgba(15,212,184,0.1);border:1px solid rgba(15,212,184,0.2)}
+.svc-card.ac .svc-icon{background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.2)}
+.svc-name{font-family:var(--font-head);font-weight:700;font-size:30px;letter-spacing:-0.025em;margin-bottom:6px}
+.svc-card.tc .svc-name{color:var(--teal)}.svc-card.ac .svc-name{color:var(--amber)}
+.svc-mono{font-family:var(--font-mono);font-size:12px;color:var(--dim);margin-bottom:16px;letter-spacing:0.04em}
+.svc-desc{color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:24px;font-weight:300}
+.svc-features{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
+.svc-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted);line-height:1.55}
+.svc-features li::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.svc-card.tc .svc-features li::before{background:var(--teal)}.svc-card.ac .svc-features li::before{background:var(--amber)}
+.svc-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px}
+.svc-tag{font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:6px;background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.svc-btn{display:inline-flex;align-items:center;gap:7px;padding:12px 24px;border-radius:9px;font-family:var(--font-head);font-size:14px;font-weight:700;text-decoration:none;cursor:none;transition:all 0.2s}
+.svc-card.tc .svc-btn{background:rgba(15,212,184,0.12);color:var(--teal);border:1px solid rgba(15,212,184,0.25)}
+.svc-card.tc .svc-btn:hover{background:rgba(15,212,184,0.22)}
+.svc-card.ac .svc-btn{background:rgba(245,166,35,0.12);color:var(--amber);border:1px solid rgba(245,166,35,0.25)}
+.svc-card.ac .svc-btn:hover{background:rgba(245,166,35,0.22)}
+.svc-meta{margin-top:28px;padding-top:22px;border-top:1px solid var(--border);display:flex;gap:20px;flex-wrap:wrap}
+.meta-item{font-family:var(--font-mono);font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:0.04em}
+.meta-item span{color:var(--muted);display:block;margin-top:3px;text-transform:none;letter-spacing:0;font-size:12px}
+
+/* ── ARCHITECTURE ANIMATED DIAGRAM ── */
+.arch-bg{background:var(--bg2)}
+.arch-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:54px}
+
+.arch-diagram{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden}
+.arch-diagram::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(15,212,184,0.04),transparent 70%);pointer-events:none}
+.arch-diag-label{font-family:var(--font-mono);font-size:10px;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px}
+
+.node{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9px;font-family:var(--font-mono);font-size:12px;font-weight:500;width:100%;position:relative}
+.node-nginx{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);color:#60a5fa}
+.node-triage-be{background:rgba(15,212,184,0.08);border:1px solid rgba(15,212,184,0.22);color:var(--teal)}
+.node-triage-fe{background:rgba(15,212,184,0.05);border:1px solid rgba(15,212,184,0.14);color:var(--teal)}
+.node-quiz-be{background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.22);color:var(--amber)}
+.node-quiz-fe{background:rgba(245,166,35,0.05);border:1px solid rgba(245,166,35,0.14);color:var(--amber)}
+.node-firebase{background:rgba(124,111,247,0.08);border:1px solid rgba(124,111,247,0.2);color:#a78bfa}
+.node-port{margin-left:auto;font-size:10px;color:var(--dim);background:rgba(255,255,255,0.04);padding:2px 7px;border-radius:4px;flex-shrink:0}
+.node-emoji{font-size:14px;flex-shrink:0}
+
+/* Animated lines */
+.conn-v{width:2px;height:20px;margin:0 auto;background:rgba(255,255,255,0.06);position:relative;overflow:hidden}
+.conn-v::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(15,212,184,0.6),transparent);animation:flowDown 1.8s linear infinite}
+.conn-v.amber::after{background:linear-gradient(to bottom,transparent,rgba(245,166,35,0.6),transparent);animation-delay:0.5s}
+.conn-v.blue::after{background:linear-gradient(to bottom,transparent,rgba(96,165,250,0.6),transparent)}
+.conn-v.purple::after{background:linear-gradient(to bottom,transparent,rgba(167,139,250,0.6),transparent)}
+
+.split-bar{height:2px;background:rgba(255,255,255,0.06);position:relative;overflow:hidden}
+.split-bar::after{content:'';position:absolute;left:-100%;top:0;height:100%;width:100%;background:linear-gradient(to right,transparent,rgba(255,255,255,0.3),transparent);animation:flowRight 2s linear infinite}
+
+@keyframes flowDown{0%{top:-100%}100%{top:100%}}
+@keyframes flowRight{0%{left:-100%}100%{left:100%}}
+
+.arch-features{display:flex;flex-direction:column;gap:20px}
+.arch-feat{display:flex;gap:14px;align-items:flex-start}
+.arch-feat-icon{width:44px;height:44px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--surface);border:1px solid var(--border)}
+.arch-feat-title{font-family:var(--font-head);font-weight:600;font-size:16px;margin-bottom:4px;color:var(--text)}
+.arch-feat-desc{font-size:14px;color:var(--muted);line-height:1.65}
+.arch-feat-desc code{font-family:var(--font-mono);color:var(--teal);font-size:12px}
+
+/* ── TECH STACK ── */
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
+.tech-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all 0.2s}
+.tech-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.tech-cat{font-family:var(--font-mono);font-size:11px;color:var(--dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.tech-items{display:flex;flex-direction:column;gap:11px}
+.tech-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
+.tech-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* ── PIPELINE ── */
+.pipe-bg{background:var(--bg2)}
+.pipeline{display:flex;align-items:center;gap:0;margin-top:54px;overflow-x:auto;padding-bottom:8px}
+.pipe-step{flex:1;min-width:155px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 16px;text-align:center;transition:all 0.2s}
+.pipe-step:hover{border-color:var(--border2);transform:translateY(-4px)}
+.pipe-step.live{border-color:rgba(15,212,184,0.3);background:linear-gradient(160deg,var(--surface),rgba(15,212,184,0.04))}
+.pipe-num{font-family:var(--font-mono);font-size:10px;color:var(--teal);letter-spacing:0.1em;margin-bottom:10px;display:block}
+.pipe-icon{font-size:24px;margin-bottom:10px;display:block}
+.pipe-name{font-family:var(--font-head);font-weight:600;font-size:14px;margin-bottom:4px;color:var(--text)}
+.pipe-tool{font-family:var(--font-mono);font-size:11px;color:var(--teal)}
+.pipe-arrow{width:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:18px}
+
+/* ── CTA ── */
+.cta-section{text-align:center;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-title{font-family:var(--font-head);font-weight:800;font-size:clamp(32px,5vw,56px);letter-spacing:-0.03em;margin-bottom:14px}
+.cta-sub{color:var(--muted);font-size:18px;margin-bottom:36px;font-weight:300;line-height:1.7}
+.cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-amber{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;background:var(--amber);color:#000;font-family:var(--font-head);font-weight:700;font-size:15px;text-decoration:none;border:none;cursor:none;transition:all 0.2s}
+.btn-amber:hover{background:var(--amber2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(245,166,35,0.25)}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-brand{display:flex;align-items:center;gap:10px}
+.footer-logo-mark{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--teal),var(--teal2));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:13px;color:#000}
+.footer-brand-text{font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--text)}
+.footer-info{font-family:var(--font-mono);font-size:11px;color:var(--dim);text-align:center;line-height:1.8}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:13px;color:var(--dim);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--muted)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.45}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:0.1s}.reveal-d2{transition-delay:0.2s}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:3px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero-title{font-size:clamp(48px,13vw,80px);white-space:normal}
+  section{padding:60px 20px}
+  .services-grid{grid-template-columns:1fr}
+  .arch-wrap{grid-template-columns:1fr}
+  .tech-grid{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;text-align:center;padding:28px 20px}
+}
+@media(max-width:600px){
+  .stats-row{flex-direction:column}
+  .stat{border-right:none;border-bottom:1px solid var(--border)}
+  .stat:last-child{border-bottom:none}
+  .tech-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo-mark">S</div>
+    <span class="nav-logo-text">SupportHub</span>
+    <span class="nav-version">v1.0.0</span>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#stack">Tech Stack</a>
+    <a href="#pipeline">DevOps</a>
+  </div>
+  <div class="nav-right">
+    <a href="http://localhost/triage/" class="nav-btn nav-btn-ghost">TriageAgent ↗</a>
+    <a href="http://localhost/quiz/" class="nav-btn nav-btn-teal">QuizBot ↗</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    AI-Powered Microservices Platform for Non-Profit Operations
+  </div>
+
+  <h1 class="hero-title">
+    <span class="word-support">Support</span><span class="word-hub">Hub</span>
+  </h1>
+
+  <p class="hero-tagline">
+    <em>One platform.</em> &nbsp;Two AI agents. &nbsp;<em>Infinite impact.</em>
+  </p>
+
+  <p class="hero-sub">
+    SupportHub unifies TriageAgent and QuizBot into a single production-grade microservices
+    platform — containerized with Docker, orchestrated with Kubernetes, provisioned with Terraform.
+    Built to help non-profit teams triage communication faster, train staff smarter,
+    and scale operations effortlessly.
+  </p>
+
+  <div class="hero-actions">
+    <a href="http://localhost/triage/" class="btn-primary">Launch TriageAgent →</a>
+    <a href="http://localhost/quiz/" class="btn-ghost">Launch QuizBot →</a>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><span class="stat-val t">2</span><div class="stat-lbl">AI Microservices</div></div>
+    <div class="stat"><span class="stat-val a">5</span><div class="stat-lbl">Docker Containers</div></div>
+    <div class="stat"><span class="stat-val t">5–10s</span><div class="stat-lbl">Avg Triage Time</div></div>
+    <div class="stat"><span class="stat-val p">90–95%</span><div class="stat-lbl">Classification Accuracy</div></div>
+    <div class="stat"><span class="stat-val b">IaC</span><div class="stat-lbl">Terraform Provisioned</div></div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">// Platform Services</div>
+      <h2 class="sec-title">Two Intelligent Modules.<br/>One Unified Platform.</h2>
+      <p class="sec-sub">Both services run in independent Docker containers, deployed together under a unified Nginx API gateway — independently scalable, together unstoppable.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- TriageAgent -->
+      <div class="svc-card tc reveal reveal-d1">
+        <div class="svc-glow"></div>
+        <span class="svc-port">:8000 · :3000</span>
+        <div class="svc-icon">⚡</div>
+        <div class="svc-name">TriageAgent</div>
+        <div class="svc-mono">Non-Profit Support Triage System</div>
+        <p class="svc-desc">
+          An AI-powered communication triage system that automatically classifies incoming messages
+          by urgency and intent, extracts named entities, generates professional draft responses,
+          and routes to the correct department — in under 10 seconds. Built with a multi-agent
+          LangChain pipeline and real-time Firebase integration, it transforms chaotic inboxes into
+          structured, actionable workflows for non-profit support teams.
+        </p>
+        <ul class="svc-features">
+          <li>AI message classification &amp; urgency detection via multi-agent LangChain pipeline</li>
+          <li>Named Entity Recognition (NER) with spaCy — extracts people, orgs &amp; key dates</li>
+          <li>16 REST API endpoints across 4 route modules with JWT role-based auth</li>
+          <li>Real-time Firebase Firestore sync with live analytics dashboard</li>
+          <li>AI-generated professional draft responses with one-click send capability</li>
+        </ul>
+        <div class="svc-tags">
+          <span class="svc-tag">FastAPI</span><span class="svc-tag">LangChain</span><span class="svc-tag">Gemini 2.5 Flash</span><span class="svc-tag">spaCy NER</span><span class="svc-tag">React 19</span><span class="svc-tag">Firebase</span><span class="svc-tag">Framer Motion</span>
+        </div>
+        <a href="http://localhost/triage/" class="svc-btn">Open TriageAgent →</a>
+        <div class="svc-meta">
+          <div class="meta-item">Backend<span>FastAPI :8000</span></div>
+          <div class="meta-item">Frontend<span>React :3000</span></div>
+          <div class="meta-item">AI Model<span>Multi-Agent</span></div>
+          <div class="meta-item">Database<span>Firebase</span></div>
+        </div>
+      </div>
+
+      <!-- QuizBot -->
+      <div class="svc-card ac reveal reveal-d2">
+        <div class="svc-glow"></div>
+        <span class="svc-port">:8001 · :3001</span>
+        <div class="svc-icon">🧠</div>
+        <div class="svc-name">QuizBot</div>
+        <div class="svc-mono">AI-Driven Educational Assessment Platform</div>
+        <p class="svc-desc">
+          An intelligent quiz generation platform that trains non-profit staff through
+          AI-generated assessments. It parses real donor emails, builds 384-dimensional
+          vector embeddings, and generates contextual MCQ questions using a full RAG
+          architecture — then evaluates answers with deep explanations and tracks progress
+          over time to identify skill gaps and continually improve team performance.
+        </p>
+        <ul class="svc-features">
+          <li>RAG pipeline with ChromaDB vector store and 384-dim Sentence Transformer embeddings</li>
+          <li>AI quiz generation directly from real donor email content for practical context</li>
+          <li>Deep answer evaluation with contextual explanations powered by Gemini 2.5 Flash</li>
+          <li>Progress tracking, performance analytics &amp; Firebase authentication</li>
+          <li>Persistent SQLite + ChromaDB storage via Docker volume mounts</li>
+        </ul>
+        <div class="svc-tags">
+          <span class="svc-tag">FastAPI</span><span class="svc-tag">ChromaDB</span><span class="svc-tag">Gemini 2.5 Flash</span><span class="svc-tag">Sentence Transformers</span><span class="svc-tag">React 19</span><span class="svc-tag">Firebase</span><span class="svc-tag">SQLite</span>
+        </div>
+        <a href="http://localhost/quiz/" class="svc-btn">Open QuizBot →</a>
+        <div class="svc-meta">
+          <div class="meta-item">Backend<span>FastAPI :8001</span></div>
+          <div class="meta-item">Frontend<span>React :3001</span></div>
+          <div class="meta-item">Vector DB<span>ChromaDB</span></div>
+          <div class="meta-item">Embeddings<span>384-dim</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHITECTURE ── -->
+<section id="architecture" class="arch-bg">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">// System Architecture</div>
+      <h2 class="sec-title">Microservices.<br/>Production-Grade.</h2>
+      <p class="sec-sub">Five independent containers connected through a shared Docker network, routed through Nginx, orchestrated by Kubernetes — all provisioned with a single Terraform command.</p>
+    </div>
+
+    <div class="arch-wrap reveal">
+
+      <!-- Animated topology diagram -->
+      <div class="arch-diagram">
+        <div class="arch-diag-label">Container Topology — Live Data Flow</div>
+
+        <!-- Row 1: Client -->
+        <div style="display:flex;justify-content:center;margin-bottom:0">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--dim);text-align:center;padding:8px 20px;border:1px dashed rgba(255,255,255,0.08);border-radius:8px;letter-spacing:0.06em">CLIENT BROWSER</div>
+        </div>
+
+        <div class="conn-v blue" style="height:16px;margin:0 auto;width:2px"></div>
+
+        <!-- Nginx -->
+        <div style="display:flex;justify-content:center">
+          <div class="node node-nginx" style="max-width:260px">
+            <span class="node-emoji">🌐</span>
+            <span>supporthub-nginx</span>
+            <span class="node-port">:80</span>
+          </div>
+        </div>
+
+        <!-- Split down -->
+        <div style="display:flex;justify-content:center">
+          <div class="conn-v blue" style="height:14px"></div>
+        </div>
+
+        <!-- H split bar -->
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;align-items:center">
+          <div class="split-bar"></div>
+          <div style="width:2px;height:14px;background:rgba(255,255,255,0.06)"></div>
+          <div class="split-bar"></div>
+        </div>
+
+        <!-- Down to service pairs -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="conn-v" style="height:14px"></div>
+          <div class="conn-v amber" style="height:14px"></div>
+        </div>
+
+        <!-- Service pairs -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <!-- Triage -->
+          <div style="display:flex;flex-direction:column;align-items:stretch;gap:0">
+            <div class="node node-triage-be">
+              <span class="node-emoji">⚡</span>
+              <span>triage-backend</span>
+              <span class="node-port">:8000</span>
+            </div>
+            <div class="conn-v" style="height:10px"></div>
+            <div class="node node-triage-fe">
+              <span class="node-emoji">⚛️</span>
+              <span>triage-frontend</span>
+              <span class="node-port">:3000</span>
+            </div>
+          </div>
+          <!-- Quiz -->
+          <div style="display:flex;flex-direction:column;align-items:stretch;gap:0">
+            <div class="node node-quiz-be">
+              <span class="node-emoji">🧠</span>
+              <span>quiz-backend</span>
+              <span class="node-port">:8001</span>
+            </div>
+            <div class="conn-v amber" style="height:10px"></div>
+            <div class="node node-quiz-fe">
+              <span class="node-emoji">⚛️</span>
+              <span>quiz-frontend</span>
+              <span class="node-port">:3001</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Down to firebase -->
+        <div style="display:grid;grid-template-columns:1fr 2px 1fr;align-items:center;margin-top:0">
+          <div class="split-bar" style="opacity:0.5"></div>
+          <div style="width:2px;height:16px;background:rgba(124,111,247,0.15)"></div>
+          <div class="split-bar" style="opacity:0.5"></div>
+        </div>
+        <div class="conn-v purple" style="height:14px;background:rgba(124,111,247,0.1)">
+          <style>.conn-v.purple::after{background:linear-gradient(to bottom,transparent,rgba(124,111,247,0.7),transparent)}</style>
+        </div>
+
+        <!-- Firebase -->
+        <div style="display:flex;justify-content:center">
+          <div class="node node-firebase" style="max-width:260px">
+            <span class="node-emoji">🔥</span>
+            <span>Firebase Cloud</span>
+            <span class="node-port">Auth + DB</span>
+          </div>
+        </div>
+
+        <!-- Network badge -->
+        <div style="margin-top:18px;padding:11px 14px;border-radius:9px;background:rgba(34,211,126,0.04);border:1px solid rgba(34,211,126,0.14);display:flex;align-items:center;gap:10px">
+          <div style="width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0"></div>
+          <span style="font-family:var(--font-mono);font-size:11px;color:var(--green)">supporthub-network</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--dim);margin-left:auto">bridge mode</span>
+        </div>
+      </div>
+
+      <!-- Feature callouts -->
+      <div class="arch-features">
+        <div class="arch-feat">
+          <div class="arch-feat-icon">🌐</div>
+          <div>
+            <div class="arch-feat-title">Nginx API Gateway</div>
+            <div class="arch-feat-desc">Single entry point on port 80. Routes <code>/triage/*</code> to TriageAgent and <code>/quiz/*</code> to QuizBot. Root <code>/</code> serves this SupportHub portal.</div>
+          </div>
+        </div>
+        <div class="arch-feat">
+          <div class="arch-feat-icon">🐳</div>
+          <div>
+            <div class="arch-feat-title">Docker Containerization</div>
+            <div class="arch-feat-desc">All 5 services in isolated containers with multi-stage builds. One command — <code>docker compose up</code> — starts everything.</div>
+          </div>
+        </div>
+        <div class="arch-feat">
+          <div class="arch-feat-icon">☸️</div>
+          <div>
+            <div class="arch-feat-title">Kubernetes Orchestration</div>
+            <div class="arch-feat-desc">K8s deployments, services, and ingress defined for every container. Auto-restart, health probes, and horizontal scaling built in.</div>
+          </div>
+        </div>
+        <div class="arch-feat">
+          <div class="arch-feat-icon">🏗️</div>
+          <div>
+            <div class="arch-feat-title">Terraform IaC</div>
+            <div class="arch-feat-desc">Full infrastructure as code. <code>terraform apply</code> installs Docker, provisions the host, and deploys all containers — zero manual steps.</div>
+          </div>
+        </div>
+        <div class="arch-feat">
+          <div class="arch-feat-icon">⚡</div>
+          <div>
+            <div class="arch-feat-title">GitHub Actions CI/CD</div>
+            <div class="arch-feat-desc">Push to main → tests run → 5 Docker images built and pushed to Docker Hub → auto-deployed. Full pipeline in minutes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH STACK ── -->
+<section id="stack">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label">// Technology Stack</div>
+      <h2 class="sec-title">Built with the right tools.</h2>
+      <p class="sec-sub" style="margin:0 auto">Every layer — from AI inference to infrastructure provisioning — purpose-selected for reliability and scale.</p>
+    </div>
+    <div class="tech-grid reveal">
+      <div class="tech-card">
+        <div class="tech-cat">DevOps</div>
+        <div class="tech-items">
+          <div class="tech-item"><div class="tech-dot" style="background:var(--teal)"></div>Docker + Compose</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--teal)"></div>Kubernetes (K8s)</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--teal)"></div>Terraform 1.14</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--teal)"></div>GitHub Actions CI/CD</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--teal)"></div>Nginx API Gateway</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-cat">AI / ML</div>
+        <div class="tech-items">
+          <div class="tech-item"><div class="tech-dot" style="background:var(--amber)"></div>Gemini 2.5 Flash</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--amber)"></div>LangChain Agents</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--amber)"></div>spaCy NER</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--amber)"></div>ChromaDB Vectors</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--amber)"></div>Sentence Transformers</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-cat">Backend</div>
+        <div class="tech-items">
+          <div class="tech-item"><div class="tech-dot" style="background:var(--purple)"></div>Python 3.11</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--purple)"></div>FastAPI + Uvicorn</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--purple)"></div>Pydantic V2</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--purple)"></div>Firebase Admin SDK</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--purple)"></div>SQLite + SQLAlchemy</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-cat">Frontend</div>
+        <div class="tech-items">
+          <div class="tech-item"><div class="tech-dot" style="background:var(--green)"></div>React 19 + Vite 7</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--green)"></div>Tailwind CSS 3.4</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--green)"></div>Framer Motion</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--green)"></div>Zustand</div>
+          <div class="tech-item"><div class="tech-dot" style="background:var(--green)"></div>Recharts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PIPELINE ── -->
+<section id="pipeline" class="pipe-bg">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">// CI/CD Pipeline</div>
+      <h2 class="sec-title">Push code.<br/>Everything deploys.</h2>
+      <p class="sec-sub">GitHub Actions handles the entire pipeline automatically — from code commit to running containers, with zero manual intervention.</p>
+    </div>
+    <div class="pipeline reveal">
+      <div class="pipe-step">
+        <span class="pipe-num">STEP 01</span>
+        <span class="pipe-icon">💻</span>
+        <div class="pipe-name">Code Push</div>
+        <div class="pipe-tool">git push main</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <span class="pipe-num">STEP 02</span>
+        <span class="pipe-icon">🧪</span>
+        <div class="pipe-name">Run Tests</div>
+        <div class="pipe-tool">GitHub Actions</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <span class="pipe-num">STEP 03</span>
+        <span class="pipe-icon">🐳</span>
+        <div class="pipe-name">Build Images</div>
+        <div class="pipe-tool">docker build ×5</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <span class="pipe-num">STEP 04</span>
+        <span class="pipe-icon">📦</span>
+        <div class="pipe-name">Push to Hub</div>
+        <div class="pipe-tool">Docker Hub</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <span class="pipe-num">STEP 05</span>
+        <span class="pipe-icon">🏗️</span>
+        <div class="pipe-name">Terraform</div>
+        <div class="pipe-tool">IaC provisioning</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step live">
+        <span class="pipe-num">STEP 06</span>
+        <span class="pipe-icon">✅</span>
+        <div class="pipe-name">Live!</div>
+        <div class="pipe-tool" style="color:var(--green)">Health checks pass</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="container" style="padding:80px 0;text-align:center">
+    <div class="reveal">
+      <div class="sec-label" style="justify-content:center;display:flex">// Get Started</div>
+      <h2 class="cta-title">Choose your module.</h2>
+      <p class="cta-sub">Both services are live and ready.<br/>Select a platform to begin.</p>
+      <div class="cta-actions">
+        <a href="http://localhost/triage/" class="btn-primary">⚡ Open TriageAgent</a>
+        <a href="http://localhost/quiz/" class="btn-amber">🧠 Open QuizBot</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo-mark">S</div>
+    <span class="footer-brand-text">SupportHub</span>
+  </div>
+  <div class="footer-info">
+    AI-Powered Microservices Platform for Non-Profit Support Operations<br/>
+    <span style="color:var(--teal)">TriageAgent</span>
+    &nbsp;·&nbsp;
+    <span style="color:var(--amber)">QuizBot</span>
+    &nbsp;·&nbsp; Nginx &nbsp;·&nbsp; Docker &nbsp;·&nbsp; Kubernetes &nbsp;·&nbsp; Terraform
+  </div>
+  <div class="footer-links">
+    <a href="http://localhost:8000/docs">Triage API Docs ↗</a>
+    <a href="http://localhost:8001/docs">Quiz API Docs ↗</a>
+    <a href="https://github.com/anushkakashyap31/TriageAgent">GitHub ↗</a>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }, 80);
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.width = '18px'; cursor.style.height = '18px'; });
+  el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; });
+});
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100);
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
