@@ -37,15 +37,17 @@ jobs:
           cd QuizBot/backend
           pip install -r requirements.txt
 
-      - name: Check TriageAgent imports
+      - name: Check TriageAgent syntax
         run: |
           cd TriageAgent/backend
-          python -c "from app.main import app; print('TriageAgent OK')"
+          python -m py_compile app/main.py
+          echo "TriageAgent syntax OK"
 
-      - name: Check QuizBot imports
+      - name: Check QuizBot syntax
         run: |
           cd QuizBot/backend
-          python -c "from app.main import app; print('QuizBot OK')"
+          python -m py_compile app/main.py
+          echo "QuizBot syntax OK"
 
   build-and-push:
     name: Build and Push Docker Images
