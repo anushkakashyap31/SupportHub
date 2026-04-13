@@ -69,7 +69,7 @@ function App() {
   }, [setUser, setLoading]);
 
   return (
-    <Router>
+    <Router basename="/quiz">
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-1">
@@ -103,7 +103,7 @@ function App() {
               }
             />
             <Route
-              path="/quiz"
+              path="/generate"
               element={
                 <ProtectedRoute>
                   <QuizPage />

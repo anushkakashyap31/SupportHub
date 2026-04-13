@@ -1,9 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { FaRocket, FaBrain, FaChartLine, FaUsers, FaCheckCircle, FaLightbulb } from 'react-icons/fa';
+import { useAuthStore } from '../store/authStore';  
 
 const Home = () => {
+  const { isAuthenticated } = useAuthStore();  
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
   const features = [
     {
       icon: FaBrain,

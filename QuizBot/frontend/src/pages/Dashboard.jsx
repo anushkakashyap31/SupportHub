@@ -77,7 +77,7 @@ const Dashboard = () => {
           className="grid md:grid-cols-3 gap-6 mb-12"
         >
           <Link
-            to="/quiz"
+            to="/generate"
             className="card hover:shadow-2xl transition-all group"
           >
             <div className="flex items-center space-x-4">

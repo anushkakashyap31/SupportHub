@@ -7,7 +7,7 @@ const Sidebar = () => {
   
   const menuItems = [
     { path: '/dashboard', icon: FaHome, label: 'Dashboard' },
-    { path: '/quiz', icon: FaPlus, label: 'New Quiz' },
+    { path: '/generate', icon: FaPlus, label: 'New Quiz' },
     { path: '/history', icon: FaHistory, label: 'History' },
     { path: '/progress', icon: FaChartLine, label: 'Progress' },
   ];

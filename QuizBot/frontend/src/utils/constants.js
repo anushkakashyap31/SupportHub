@@ -51,7 +51,7 @@ export const ROUTES = {
   LOGIN: '/login',
   REGISTER: '/register',
   DASHBOARD: '/dashboard',
-  QUIZ: '/quiz',
+  QUIZ: '/generate',
   HISTORY: '/history',
   PROGRESS: '/progress',
 };

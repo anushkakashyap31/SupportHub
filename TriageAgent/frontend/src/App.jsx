@@ -181,7 +181,7 @@ const AnimatedRoutes = () => {
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/triage">
       <AnimatedRoutes />
     </Router>
   );
