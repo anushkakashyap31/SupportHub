@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: triage-frontend
-          image: supporthub-triage-frontend:latest
+          image: anushkakashyap31/supporthub-triage-frontend:latest
           ports:
             - containerPort: 3000
           resources:

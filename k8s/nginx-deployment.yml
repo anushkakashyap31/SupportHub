@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: supporthub-nginx:latest
+          image: anushkakashyap31/supporthub-nginx:latest
           ports:
             - containerPort: 80
           resources:

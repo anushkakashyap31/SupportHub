@@ -29,6 +29,9 @@ terraform/*.tfstate
 terraform/*.tfstate.backup
 terraform/.terraform.lock.hcl
 
+#Kubernetes
+k8s/secrets.yml
+
 # OS
 .DS_Store
 Thumbs.db

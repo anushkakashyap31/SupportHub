@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: quiz-backend
-          image: supporthub-quiz-backend:latest
+          image: anushkakashyap31/supporthub-quiz-backend:latest
           ports:
             - containerPort: 8001
           env:

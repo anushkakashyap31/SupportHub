@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: triage-backend
-          image: supporthub-triage-backend:latest
+          image: anushkakashyap31/supporthub-triage-backend:latest
           ports:
             - containerPort: 8000
           env:

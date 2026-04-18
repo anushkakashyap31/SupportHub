@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: quiz-frontend
-          image: supporthub-quiz-frontend:latest
+          image: anushkakashyap31/supporthub-quiz-frontend:latest
           ports:
             - containerPort: 3001
           resources:
