@@ -17,11 +17,11 @@ The platform demonstrates real-world infrastructure automation using:
 
 | Service | URL |
 |---|---|
-| SupportHub Platform | http://13.206.119.123:8080 |
-| TriageAgent | http://13.206.119.123:8080/triage/ |
-| QuizBot | http://13.206.119.123:8080/quiz/ |
-| TriageAgent API Docs | http://13.206.119.123:8000/docs |
-| QuizBot API Docs | http://13.206.119.123:8001/docs |
+| SupportHub Platform | http://13.206.179.67:8080 |
+| TriageAgent | http://13.206.179.67:8080/triage/ |
+| QuizBot | http://13.206.179.67:8080/quiz/ |
+| TriageAgent API Docs | http://13.206.179.67:8000/docs |
+| QuizBot API Docs | http://13.206.179.67:8001/docs |
 
 ---
 

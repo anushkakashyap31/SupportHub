@@ -10,6 +10,7 @@ services:
     environment:
       - GEMINI_API_KEY=${TRIAGE_GEMINI_API_KEY}
       - JWT_SECRET=${TRIAGE_JWT_SECRET}
+      - SECRET_KEY=${TRIAGE_JWT_SECRET}
       - FRONTEND_URL=${TRIAGE_FRONTEND_URL}
     volumes:
       - ./TriageAgent/backend/firebase-credentials.json:/app/firebase-credentials.json:ro
@@ -40,6 +41,7 @@ services:
     environment:
       - GEMINI_API_KEY=${QUIZ_GEMINI_API_KEY}
       - JWT_SECRET=${QUIZ_JWT_SECRET}
+      - SECRET_KEY=${QUIZ_JWT_SECRET}
       - FRONTEND_URL=${QUIZ_FRONTEND_URL}
     volumes:
       - ./QuizBot/backend/firebase-credentials.json:/app/firebase-credentials.json:ro
@@ -68,7 +70,7 @@ services:
       dockerfile: nginx/Dockerfile
     container_name: supporthub-nginx
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       - triage-frontend
       - triage-backend

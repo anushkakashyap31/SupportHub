@@ -7,17 +7,17 @@ python-dotenv==1.0.0
 pydantic==2.5.0
 pydantic-settings==2.1.0
 
-# Vector DB - UPDATED versions for Python 3.13 compatibility
+# Vector DB — pinned for torch CPU compatibility
 numpy<2.0
 faiss-cpu>=1.9.0
 chromadb==0.4.18
-sentence-transformers==2.2.2
 torch==2.1.0+cpu
 torchvision==0.16.0+cpu
-huggingface-hub>=0.20.0
-transformers==4.41.0 
+transformers==4.41.0
+sentence-transformers==2.2.2
+huggingface-hub==0.21.4
 
-# LLM & AI - Use only the new package
+# LLM & AI
 google-genai>=0.3.0
 
 # Firebase

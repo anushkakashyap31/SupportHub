@@ -26,11 +26,23 @@ spec:
                 secretKeyRef:
                   name: triage-secrets
                   key: gemini-api-key
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: triage-secrets
+                  key: secret-key
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: triage-secrets
                   key: jwt-secret
+            - name: FRONTEND_URL
+              valueFrom:
+                secretKeyRef:
+                  name: triage-secrets
+                  key: frontend-url
+            - name: FIREBASE_CREDENTIALS_PATH
+              value: "./firebase-credentials.json"
           livenessProbe:
             httpGet:
               path: /health

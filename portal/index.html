@@ -65,23 +65,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 48px;d
 .hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 40px 70px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;padding:7px 18px;border-radius:24px;border:1px solid rgba(15,212,184,0.22);background:rgba(15,212,184,0.05);margin-bottom:32px;animation:fadeUp 0.7s ease both}
 .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
-
-/* Hero title — SupportHub */
 .hero-title{font-family:var(--font-head);font-size:clamp(64px,10vw,110px);font-weight:800;line-height:1.0;letter-spacing:-0.045em;margin-bottom:16px;animation:fadeUp 0.7s 0.1s ease both;white-space:nowrap}
 .hero-title .word-support{color:var(--text)}
 .hero-title .word-hub{background:linear-gradient(90deg,var(--teal) 0%,var(--blue2) 45%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
 .hero-tagline{font-family:var(--font-head);font-size:clamp(17px,2.2vw,24px);font-weight:400;color:var(--muted);letter-spacing:-0.01em;margin-bottom:24px;animation:fadeUp 0.7s 0.15s ease both}
 .hero-tagline em{color:var(--text);font-style:normal;font-weight:600}
-
 .hero-sub{font-size:clamp(15px,1.6vw,17px);color:var(--muted);max-width:660px;margin:0 auto 44px;font-weight:300;line-height:1.8;animation:fadeUp 0.7s 0.2s ease both}
-
 .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:72px;animation:fadeUp 0.7s 0.3s ease both}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:10px;background:var(--teal);color:#000;font-family:var(--font-head);font-weight:700;font-size:15px;text-decoration:none;border:none;cursor:none;transition:all 0.2s}
 .btn-primary:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(15,212,184,0.25)}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;background:transparent;color:var(--text);font-family:var(--font-head);font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--border2);cursor:none;transition:all 0.2s}
 .btn-ghost:hover{border-color:var(--dim);background:var(--surface)}
-
 .stats-row{display:flex;gap:0;border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden;animation:fadeUp 0.7s 0.4s ease both}
 .stat{flex:1;padding:22px 24px;text-align:center;border-right:1px solid var(--border)}
 .stat:last-child{border-right:none}
@@ -136,11 +130,9 @@ section{position:relative;z-index:1;padding:100px 40px}
 /* ── ARCHITECTURE ANIMATED DIAGRAM ── */
 .arch-bg{background:var(--bg2)}
 .arch-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:54px}
-
 .arch-diagram{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden}
 .arch-diagram::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(15,212,184,0.04),transparent 70%);pointer-events:none}
 .arch-diag-label{font-family:var(--font-mono);font-size:10px;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px}
-
 .node{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9px;font-family:var(--font-mono);font-size:12px;font-weight:500;width:100%;position:relative}
 .node-nginx{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);color:#60a5fa}
 .node-triage-be{background:rgba(15,212,184,0.08);border:1px solid rgba(15,212,184,0.22);color:var(--teal)}
@@ -150,20 +142,15 @@ section{position:relative;z-index:1;padding:100px 40px}
 .node-firebase{background:rgba(124,111,247,0.08);border:1px solid rgba(124,111,247,0.2);color:#a78bfa}
 .node-port{margin-left:auto;font-size:10px;color:var(--dim);background:rgba(255,255,255,0.04);padding:2px 7px;border-radius:4px;flex-shrink:0}
 .node-emoji{font-size:14px;flex-shrink:0}
-
-/* Animated lines */
 .conn-v{width:2px;height:20px;margin:0 auto;background:rgba(255,255,255,0.06);position:relative;overflow:hidden}
 .conn-v::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(15,212,184,0.6),transparent);animation:flowDown 1.8s linear infinite}
 .conn-v.amber::after{background:linear-gradient(to bottom,transparent,rgba(245,166,35,0.6),transparent);animation-delay:0.5s}
 .conn-v.blue::after{background:linear-gradient(to bottom,transparent,rgba(96,165,250,0.6),transparent)}
 .conn-v.purple::after{background:linear-gradient(to bottom,transparent,rgba(167,139,250,0.6),transparent)}
-
 .split-bar{height:2px;background:rgba(255,255,255,0.06);position:relative;overflow:hidden}
 .split-bar::after{content:'';position:absolute;left:-100%;top:0;height:100%;width:100%;background:linear-gradient(to right,transparent,rgba(255,255,255,0.3),transparent);animation:flowRight 2s linear infinite}
-
 @keyframes flowDown{0%{top:-100%}100%{top:100%}}
 @keyframes flowRight{0%{left:-100%}100%{left:100%}}
-
 .arch-features{display:flex;flex-direction:column;gap:20px}
 .arch-feat{display:flex;gap:14px;align-items:flex-start}
 .arch-feat-icon{width:44px;height:44px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--surface);border:1px solid var(--border)}
@@ -215,25 +202,157 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.45}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-d1{transition-delay:0.1s}.reveal-d2{transition-delay:0.2s}
+.reveal-d1{transition-delay:0.1s}.reveal-d2{transition-delay:0.2s}.reveal-d3{transition-delay:0.3s}.reveal-d4{transition-delay:0.4s}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:3px}
 
-/* ── RESPONSIVE ── */
+/* ════════════════════════════════════════
+   NEW SECTIONS — CLOUD INFRASTRUCTURE
+   ════════════════════════════════════════ */
+
+/* ── CLOUD INFRA CARDS ── */
+.cloud-bg{background:var(--bg2)}
+.cloud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+.cloud-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden;transition:all 0.3s}
+.cloud-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.cloud-card.cc-aws::before{background:linear-gradient(90deg,transparent,#f90,transparent)}
+.cloud-card.cc-tf::before{background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.cloud-card.cc-k8s::before{background:linear-gradient(90deg,transparent,var(--blue),transparent)}
+.cloud-card:hover{transform:translateY(-5px)}
+.cloud-card.cc-aws:hover{border-color:rgba(255,153,0,0.35);box-shadow:0 20px 60px rgba(255,153,0,0.07)}
+.cloud-card.cc-tf:hover{border-color:rgba(124,111,247,0.35);box-shadow:0 20px 60px rgba(124,111,247,0.07)}
+.cloud-card.cc-k8s:hover{border-color:rgba(59,130,246,0.35);box-shadow:0 20px 60px rgba(59,130,246,0.07)}
+.cloud-card-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+.cc-aws .cloud-card-icon{background:rgba(255,153,0,0.1);border:1px solid rgba(255,153,0,0.2)}
+.cc-tf .cloud-card-icon{background:rgba(124,111,247,0.1);border:1px solid rgba(124,111,247,0.2)}
+.cc-k8s .cloud-card-icon{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2)}
+.cloud-card-sub{font-family:var(--font-mono);font-size:10px;color:var(--dim);letter-spacing:0.06em;margin-bottom:4px}
+.cloud-card-title{font-family:var(--font-head);font-weight:700;font-size:22px;letter-spacing:-0.02em;margin-bottom:8px}
+.cc-aws .cloud-card-title{color:#f90}
+.cc-tf .cloud-card-title{color:var(--purple)}
+.cc-k8s .cloud-card-title{color:var(--blue)}
+.cloud-card-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px;font-weight:300}
+.cloud-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.cloud-tag{font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:6px;background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.cloud-tag.hl-aws{color:#f90;border-color:rgba(255,153,0,0.25);background:rgba(255,153,0,0.07)}
+.cloud-tag.hl-tf{color:var(--purple);border-color:rgba(124,111,247,0.25);background:rgba(124,111,247,0.07)}
+.cloud-tag.hl-k8s{color:var(--blue);border-color:rgba(59,130,246,0.25);background:rgba(59,130,246,0.07)}
+.cloud-specs{display:flex;flex-direction:column;gap:8px;margin-top:auto}
+.cloud-spec-row{display:flex;align-items:center;justify-content:space-between;font-family:var(--font-mono);font-size:11px}
+.cloud-spec-row .csk{color:var(--dim)}
+.cloud-spec-row .csv{color:var(--muted)}
+
+/* ── FULL SYSTEM ARCHITECTURE (new extended diagram) ── */
+.full-arch-bg{background:var(--bg3)}
+.full-arch-diagram{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden;margin-top:48px}
+.full-arch-diagram::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(15,212,184,0.03),transparent 65%);pointer-events:none}
+.fad-label{font-family:var(--font-mono);font-size:10px;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px;text-align:center}
+
+/* Full arch nodes */
+.fa-row{display:flex;justify-content:center;margin-bottom:0}
+.fa-node{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:9px;font-family:var(--font-mono);font-size:12px;font-weight:500}
+.fa-node.client{background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.1);color:var(--dim)}
+.fa-node.ec2{background:rgba(255,153,0,0.08);border:1px solid rgba(255,153,0,0.22);color:#f90}
+.fa-node.nginx{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);color:#60a5fa}
+.fa-node.triage-be{background:rgba(15,212,184,0.08);border:1px solid rgba(15,212,184,0.22);color:var(--teal)}
+.fa-node.triage-fe{background:rgba(15,212,184,0.05);border:1px solid rgba(15,212,184,0.14);color:var(--teal)}
+.fa-node.quiz-be{background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.22);color:var(--amber)}
+.fa-node.quiz-fe{background:rgba(245,166,35,0.05);border:1px solid rgba(245,166,35,0.14);color:var(--amber)}
+.fa-node.firebase{background:rgba(124,111,247,0.08);border:1px solid rgba(124,111,247,0.2);color:#a78bfa}
+.fa-node.k8s{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);color:#60a5fa}
+.fa-node.tf{background:rgba(124,111,247,0.06);border:1px solid rgba(124,111,247,0.18);color:var(--purple)}
+.fa-port{margin-left:8px;font-size:10px;color:var(--dim);background:rgba(255,255,255,0.04);padding:2px 6px;border-radius:4px}
+
+.fa-conn-v{width:2px;height:18px;margin:0 auto;background:rgba(255,255,255,0.06);position:relative;overflow:hidden}
+.fa-conn-v::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;animation:flowDown 1.8s linear infinite}
+.fa-conn-v.blue::after{background:linear-gradient(to bottom,transparent,rgba(96,165,250,0.7),transparent)}
+.fa-conn-v.teal::after{background:linear-gradient(to bottom,transparent,rgba(15,212,184,0.7),transparent)}
+.fa-conn-v.amber::after{background:linear-gradient(to bottom,transparent,rgba(245,166,35,0.7),transparent);animation-delay:0.5s}
+.fa-conn-v.purple::after{background:linear-gradient(to bottom,transparent,rgba(167,139,250,0.7),transparent);animation-delay:0.9s}
+.fa-conn-v.orange::after{background:linear-gradient(to bottom,transparent,rgba(255,153,0,0.7),transparent)}
+
+.fa-split{height:2px;background:rgba(255,255,255,0.06);position:relative;overflow:hidden}
+.fa-split::after{content:'';position:absolute;left:-100%;top:0;height:100%;width:100%;background:linear-gradient(to right,transparent,rgba(255,255,255,0.25),transparent);animation:flowRight 2s linear infinite}
+
+.fa-bottom-row{display:flex;gap:12px;justify-content:center;margin-top:0}
+.fa-badge{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:9px;font-family:var(--font-mono);font-size:11px}
+.fa-badge.network{background:rgba(34,211,126,0.04);border:1px solid rgba(34,211,126,0.14);color:var(--green)}
+.fa-badge.k8s-b{background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.15);color:#60a5fa}
+.fa-badge.tf-b{background:rgba(124,111,247,0.05);border:1px solid rgba(124,111,247,0.15);color:var(--purple)}
+.fa-badge-dot{width:6px;height:6px;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+
+/* ── KUBERNETES SECTION ── */
+.k8s-bg{background:var(--bg2)}
+.k8s-pods-grid{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px;justify-content:center}
+.k8s-pod{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 18px;min-width:180px;flex:1;transition:all 0.2s;position:relative}
+.k8s-pod:hover{transform:translateY(-4px);border-color:var(--border2)}
+.k8s-pod-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.k8s-pod-icon{font-size:18px}
+.k8s-replica-badge{font-family:var(--font-mono);font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(34,211,126,0.08);border:1px solid rgba(34,211,126,0.2);color:var(--green)}
+.k8s-pod-name{font-family:var(--font-head);font-weight:600;font-size:14px;color:var(--text);margin-bottom:4px}
+.k8s-pod-cluster{font-family:var(--font-mono);font-size:10px;color:var(--dim);margin-bottom:12px}
+.k8s-pod-meta{display:flex;flex-direction:column;gap:5px}
+.k8s-pod-meta-row{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px}
+.k8s-pod-meta-row .kpk{color:var(--dim)}
+.k8s-pod-meta-row .kpv{color:var(--muted)}
+.k8s-status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block;margin-right:5px}
+
+.k8s-cmd-block{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:32px;font-family:var(--font-mono);font-size:13px;position:relative;overflow:hidden}
+.k8s-cmd-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--teal),var(--blue))}
+.k8s-cmd-label{font-size:10px;color:var(--dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px}
+.k8s-cmd{color:var(--muted)}
+.k8s-cmd .prompt{color:var(--dim)}
+.k8s-cmd .cmd-text{color:var(--teal)}
+.k8s-cmd .flag{color:var(--amber)}
+.k8s-cmd-output{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.k8s-cmd-output-left{font-size:12px;color:var(--muted)}
+.k8s-cmd-output-right{font-family:var(--font-mono);font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(34,211,126,0.08);border:1px solid rgba(34,211,126,0.2);color:var(--green)}
+
+.k8s-features-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.k8s-feat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all 0.2s}
+.k8s-feat:hover{border-color:var(--border2);transform:translateY(-3px)}
+.k8s-feat-icon{font-size:22px;margin-bottom:12px}
+.k8s-feat-title{font-family:var(--font-head);font-weight:600;font-size:15px;color:var(--text);margin-bottom:6px}
+.k8s-feat-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ── TERRAFORM / IaC SECTION ── */
+.tf-bg{background:var(--bg3)}
+.tf-resources-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+.tf-resource{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;transition:all 0.2s}
+.tf-resource:hover{border-color:rgba(124,111,247,0.35);transform:translateY(-3px);box-shadow:0 10px 30px rgba(124,111,247,0.07)}
+.tf-resource-type{font-family:var(--font-mono);font-size:9px;color:var(--purple);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;padding:2px 7px;border-radius:4px;background:rgba(124,111,247,0.08);border:1px solid rgba(124,111,247,0.15);display:inline-block}
+.tf-resource-name{font-family:var(--font-head);font-weight:600;font-size:14px;color:var(--text);margin-bottom:4px}
+.tf-resource-detail{font-family:var(--font-mono);font-size:11px;color:var(--dim)}
+
+.tf-terminal{background:#0a0d16;border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:32px;font-family:var(--font-mono);font-size:13px;position:relative;overflow:hidden}
+.tf-terminal-bar{display:flex;align-items:center;gap:6px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.tf-dot{width:10px;height:10px;border-radius:50%}
+.tf-dot-r{background:#ff5f57}.tf-dot-y{background:#febc2e}.tf-dot-g{background:#28c840}
+.tf-terminal-title{font-size:11px;color:var(--dim);margin-left:8px;letter-spacing:0.04em}
+.tf-line{line-height:1.9}
+.tf-line .tf-prompt{color:var(--dim)}
+.tf-line .tf-cmd{color:var(--teal)}
+.tf-line .tf-comment{color:var(--dim);font-size:12px}
+.tf-line .tf-key{color:#a78bfa}
+.tf-line .tf-val{color:var(--amber)}
+.tf-line .tf-success{color:var(--green)}
+.tf-line .tf-url{color:var(--blue2);text-decoration:underline}
+.tf-line .tf-warning{color:var(--amber)}
+.tf-steps-row{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.tf-step{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;font-family:var(--font-mono);font-size:11px;background:var(--bg3);border:1px solid var(--border);color:var(--muted);transition:all 0.2s}
+.tf-step.active{background:rgba(124,111,247,0.1);border-color:rgba(124,111,247,0.3);color:var(--purple)}
+.tf-step.done{background:rgba(34,211,126,0.07);border-color:rgba(34,211,126,0.2);color:var(--green)}
+.tf-step-arrow{color:var(--dim);font-size:14px}
+
+/* ── RESPONSIVE for new sections ── */
 @media(max-width:960px){
-  nav{padding:0 20px}
-  .nav-links{display:none}
-  .hero-title{font-size:clamp(48px,13vw,80px);white-space:normal}
-  section{padding:60px 20px}
-  .services-grid{grid-template-columns:1fr}
-  .arch-wrap{grid-template-columns:1fr}
-  .tech-grid{grid-template-columns:1fr 1fr}
-  footer{flex-direction:column;text-align:center;padding:28px 20px}
+  .cloud-grid{grid-template-columns:1fr}
+  .k8s-features-row{grid-template-columns:1fr 1fr}
+  .tf-resources-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
-  .stats-row{flex-direction:column}
-  .stat{border-right:none;border-bottom:1px solid var(--border)}
-  .stat:last-child{border-bottom:none}
-  .tech-grid{grid-template-columns:1fr}
+  .k8s-pods-grid{flex-direction:column}
+  .k8s-features-row{grid-template-columns:1fr}
+  .tf-resources-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -257,10 +376,13 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
     <a href="#architecture">Architecture</a>
     <a href="#stack">Tech Stack</a>
     <a href="#pipeline">DevOps</a>
+    <a href="#cloud">Cloud</a>
+    <a href="#kubernetes">K8s</a>
+    <a href="#terraform">Terraform</a>
   </div>
   <div class="nav-right">
-    <a href="http://13.206.119.123/triage/" class="nav-btn nav-btn-ghost">TriageAgent ↗</a>
-    <a href="http://13.206.119.123/quiz/" class="nav-btn nav-btn-teal">QuizBot ↗</a>
+    <a href="http://13.206.179.67:8080/triage/" class="nav-btn nav-btn-ghost">TriageAgent ↗</a>
+    <a href="http://13.206.179.67:8080/quiz/" class="nav-btn nav-btn-teal">QuizBot ↗</a>
   </div>
 </nav>
 
@@ -287,15 +409,15 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
   </p>
 
   <div class="hero-actions">
-    <a href="http://13.206.119.123/triage/" class="btn-primary">Launch TriageAgent →</a>
-    <a href="http://13.206.119.123/quiz/" class="btn-ghost">Launch QuizBot →</a>
+    <a href="http://13.206.179.67:8080/triage/" class="btn-primary">Launch TriageAgent →</a>
+    <a href="http://13.206.179.67:8080/quiz/" class="btn-ghost">Launch QuizBot →</a>
   </div>
 
   <div class="stats-row">
     <div class="stat"><span class="stat-val t">2</span><div class="stat-lbl">AI Microservices</div></div>
     <div class="stat"><span class="stat-val a">5</span><div class="stat-lbl">Docker Containers</div></div>
-    <div class="stat"><span class="stat-val t">5–10s</span><div class="stat-lbl">Avg Triage Time</div></div>
-    <div class="stat"><span class="stat-val p">90–95%</span><div class="stat-lbl">Classification Accuracy</div></div>
+    <div class="stat"><span class="stat-val t">AWS</span><div class="stat-lbl">EC2 Deployed</div></div>
+    <div class="stat"><span class="stat-val p">K8s</span><div class="stat-lbl">Kubernetes Orchestrated</div></div>
     <div class="stat"><span class="stat-val b">IaC</span><div class="stat-lbl">Terraform Provisioned</div></div>
   </div>
 </section>
@@ -334,7 +456,7 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
         <div class="svc-tags">
           <span class="svc-tag">FastAPI</span><span class="svc-tag">LangChain</span><span class="svc-tag">Gemini 2.5 Flash</span><span class="svc-tag">spaCy NER</span><span class="svc-tag">React 19</span><span class="svc-tag">Firebase</span><span class="svc-tag">Framer Motion</span>
         </div>
-        <a href="http://13.206.119.123/triage/" class="svc-btn">Open TriageAgent →</a>
+        <a href="http://13.206.179.67:8080/triage/" class="svc-btn">Open TriageAgent →</a>
         <div class="svc-meta">
           <div class="meta-item">Backend<span>FastAPI :8000</span></div>
           <div class="meta-item">Frontend<span>React :3000</span></div>
@@ -367,7 +489,7 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
         <div class="svc-tags">
           <span class="svc-tag">FastAPI</span><span class="svc-tag">ChromaDB</span><span class="svc-tag">Gemini 2.5 Flash</span><span class="svc-tag">Sentence Transformers</span><span class="svc-tag">React 19</span><span class="svc-tag">Firebase</span><span class="svc-tag">SQLite</span>
         </div>
-        <a href="http://13.206.119.123/quiz/" class="svc-btn">Open QuizBot →</a>
+        <a href="http://13.206.179.67:8080/quiz/" class="svc-btn">Open QuizBot →</a>
         <div class="svc-meta">
           <div class="meta-item">Backend<span>FastAPI :8001</span></div>
           <div class="meta-item">Frontend<span>React :3001</span></div>
@@ -395,14 +517,12 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
       <div class="arch-diagram">
         <div class="arch-diag-label">Container Topology — Live Data Flow</div>
 
-        <!-- Row 1: Client -->
         <div style="display:flex;justify-content:center;margin-bottom:0">
           <div style="font-family:var(--font-mono);font-size:10px;color:var(--dim);text-align:center;padding:8px 20px;border:1px dashed rgba(255,255,255,0.08);border-radius:8px;letter-spacing:0.06em">CLIENT BROWSER</div>
         </div>
 
         <div class="conn-v blue" style="height:16px;margin:0 auto;width:2px"></div>
 
-        <!-- Nginx -->
         <div style="display:flex;justify-content:center">
           <div class="node node-nginx" style="max-width:260px">
             <span class="node-emoji">🌐</span>
@@ -411,27 +531,22 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
           </div>
         </div>
 
-        <!-- Split down -->
         <div style="display:flex;justify-content:center">
           <div class="conn-v blue" style="height:14px"></div>
         </div>
 
-        <!-- H split bar -->
         <div style="display:grid;grid-template-columns:1fr 2px 1fr;align-items:center">
           <div class="split-bar"></div>
           <div style="width:2px;height:14px;background:rgba(255,255,255,0.06)"></div>
           <div class="split-bar"></div>
         </div>
 
-        <!-- Down to service pairs -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div class="conn-v" style="height:14px"></div>
           <div class="conn-v amber" style="height:14px"></div>
         </div>
 
-        <!-- Service pairs -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          <!-- Triage -->
           <div style="display:flex;flex-direction:column;align-items:stretch;gap:0">
             <div class="node node-triage-be">
               <span class="node-emoji">⚡</span>
@@ -445,7 +560,6 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
               <span class="node-port">:3000</span>
             </div>
           </div>
-          <!-- Quiz -->
           <div style="display:flex;flex-direction:column;align-items:stretch;gap:0">
             <div class="node node-quiz-be">
               <span class="node-emoji">🧠</span>
@@ -461,7 +575,6 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
           </div>
         </div>
 
-        <!-- Down to firebase -->
         <div style="display:grid;grid-template-columns:1fr 2px 1fr;align-items:center;margin-top:0">
           <div class="split-bar" style="opacity:0.5"></div>
           <div style="width:2px;height:16px;background:rgba(124,111,247,0.15)"></div>
@@ -471,7 +584,6 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
           <style>.conn-v.purple::after{background:linear-gradient(to bottom,transparent,rgba(124,111,247,0.7),transparent)}</style>
         </div>
 
-        <!-- Firebase -->
         <div style="display:flex;justify-content:center">
           <div class="node node-firebase" style="max-width:260px">
             <span class="node-emoji">🔥</span>
@@ -480,7 +592,6 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
           </div>
         </div>
 
-        <!-- Network badge -->
         <div style="margin-top:18px;padding:11px 14px;border-radius:9px;background:rgba(34,211,126,0.04);border:1px solid rgba(34,211,126,0.14);display:flex;align-items:center;gap:10px">
           <div style="width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0"></div>
           <span style="font-family:var(--font-mono);font-size:11px;color:var(--green)">supporthub-network</span>
@@ -637,6 +748,388 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
   </div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════════════
+     NEW SECTION 1 — CLOUD INFRASTRUCTURE
+     ═══════════════════════════════════════════════════ -->
+<section id="cloud" class="cloud-bg">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">// Cloud Infrastructure</div>
+      <h2 class="sec-title">Production-Grade.<br/>Cloud-Native.</h2>
+      <p class="sec-sub">Deployed on AWS EC2, provisioned by Terraform, orchestrated with Kubernetes — zero manual steps from code to cloud.</p>
+    </div>
+
+    <div class="cloud-grid">
+
+      <!-- AWS EC2 -->
+      <div class="cloud-card cc-aws reveal reveal-d1">
+        <div class="cloud-card-icon">☁️</div>
+        <div class="cloud-card-sub">ap-south-1 · Mumbai Region</div>
+        <div class="cloud-card-title">AWS EC2</div>
+        <p class="cloud-card-desc">
+          SupportHub runs on a t3.small EC2 instance with Ubuntu 24.04 LTS — 2 vCPUs, 2 GiB RAM, 20 GB EBS storage, and a permanent Elastic IP. Reliable, cost-efficient, always reachable.
+        </p>
+        <div class="cloud-tags">
+          <span class="cloud-tag hl-aws">t3.small</span>
+          <span class="cloud-tag hl-aws">Ubuntu 24.04</span>
+          <span class="cloud-tag">ap-south-1</span>
+          <span class="cloud-tag">Elastic IP</span>
+        </div>
+        <div class="cloud-specs">
+          <div class="cloud-spec-row"><span class="csk">vCPUs</span><span class="csv">2 cores</span></div>
+          <div class="cloud-spec-row"><span class="csk">RAM</span><span class="csv">2 GiB</span></div>
+          <div class="cloud-spec-row"><span class="csk">Storage</span><span class="csv">20 GB EBS</span></div>
+          <div class="cloud-spec-row"><span class="csk">Public IP</span><span class="csv">Elastic (static)</span></div>
+        </div>
+      </div>
+
+      <!-- Terraform -->
+      <div class="cloud-card cc-tf reveal reveal-d2">
+        <div class="cloud-card-icon">🏗️</div>
+        <div class="cloud-card-sub">Infrastructure as Code · v1.14</div>
+        <div class="cloud-card-title">Terraform</div>
+        <p class="cloud-card-desc">
+          One command creates the complete AWS environment — VPC, subnet, internet gateway, security group, EC2, and Elastic IP. Fully reproducible, zero-click provisioning from any machine.
+        </p>
+        <div class="cloud-tags">
+          <span class="cloud-tag hl-tf">8 resources</span>
+          <span class="cloud-tag hl-tf">terraform apply</span>
+          <span class="cloud-tag">3–5 min</span>
+          <span class="cloud-tag">Idempotent</span>
+        </div>
+        <div class="cloud-specs">
+          <div class="cloud-spec-row"><span class="csk">Resources</span><span class="csv">8 AWS objects</span></div>
+          <div class="cloud-spec-row"><span class="csk">Deploy time</span><span class="csv">~3–5 minutes</span></div>
+          <div class="cloud-spec-row"><span class="csk">State</span><span class="csv">Local tfstate</span></div>
+          <div class="cloud-spec-row"><span class="csk">Provider</span><span class="csv">hashicorp/aws ~5.0</span></div>
+        </div>
+      </div>
+
+      <!-- Kubernetes -->
+      <div class="cloud-card cc-k8s reveal reveal-d3">
+        <div class="cloud-card-icon">☸️</div>
+        <div class="cloud-card-sub">K3s · Lightweight K8s</div>
+        <div class="cloud-card-title">Kubernetes</div>
+        <p class="cloud-card-desc">
+          10 K8s manifests cover all 5 services with health probes, resource limits, and auto-restart. Scale TriageAgent to 3 replicas with one command. Runs via K3s lightweight distribution.
+        </p>
+        <div class="cloud-tags">
+          <span class="cloud-tag hl-k8s">10 manifests</span>
+          <span class="cloud-tag hl-k8s">K3s</span>
+          <span class="cloud-tag">Auto-heal</span>
+          <span class="cloud-tag">HPA ready</span>
+        </div>
+        <div class="cloud-specs">
+          <div class="cloud-spec-row"><span class="csk">Manifests</span><span class="csv">10 YAML files</span></div>
+          <div class="cloud-spec-row"><span class="csk">Distribution</span><span class="csv">K3s (lightweight)</span></div>
+          <div class="cloud-spec-row"><span class="csk">Health probes</span><span class="csv">Liveness + Readiness</span></div>
+          <div class="cloud-spec-row"><span class="csk">Scaling</span><span class="csv">kubectl scale ready</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     NEW SECTION 2 — FULL SYSTEM ARCHITECTURE
+     ═══════════════════════════════════════════════════ -->
+<section id="full-arch" class="full-arch-bg">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">// Full System Architecture</div>
+      <h2 class="sec-title">From Browser to Cloud.<br/>Every Layer Defined.</h2>
+      <p class="sec-sub">Every component, connection, and service — fully automated from a single git push.</p>
+    </div>
+
+    <div class="full-arch-diagram reveal">
+      <div class="fad-label">Complete Infrastructure Topology — Live Data Flow</div>
+
+      <!-- Client -->
+      <div class="fa-row">
+        <div class="fa-node client">🖥️ &nbsp;CLIENT BROWSER</div>
+      </div>
+      <div class="fa-conn-v blue" style="height:16px;margin:0 auto;width:2px;position:relative;overflow:hidden"></div>
+
+      <!-- EC2 wrapper label -->
+      <div class="fa-row">
+        <div class="fa-node ec2">☁️ &nbsp;AWS EC2 t3.small &nbsp;·&nbsp; ap-south-1 &nbsp;·&nbsp; Elastic IP<span class="fa-port">13.206.179.67</span></div>
+      </div>
+      <div style="width:2px;height:14px;background:rgba(255,153,0,0.15);margin:0 auto;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(255,153,0,0.5),transparent);animation:flowDown 1.8s linear infinite"></div>
+      </div>
+
+      <!-- Nginx -->
+      <div class="fa-row">
+        <div class="fa-node nginx">🌐 &nbsp;supporthub-nginx<span class="fa-port">:80</span></div>
+      </div>
+
+      <!-- Split -->
+      <div style="height:14px;width:2px;background:rgba(255,255,255,0.06);margin:0 auto;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(96,165,250,0.5),transparent);animation:flowDown 1.8s linear infinite"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 2px 1fr;align-items:center;max-width:600px;margin:0 auto;width:100%">
+        <div class="fa-split"></div>
+        <div style="width:2px;height:14px;background:rgba(255,255,255,0.06)"></div>
+        <div class="fa-split"></div>
+      </div>
+
+      <!-- Triage + Quiz columns -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:0;max-width:700px;margin-left:auto;margin-right:auto">
+        <div>
+          <div style="height:14px;width:2px;background:rgba(255,255,255,0.06);margin:0 auto;position:relative;overflow:hidden">
+            <div style="position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(15,212,184,0.6),transparent);animation:flowDown 1.8s linear infinite"></div>
+          </div>
+          <div class="fa-node triage-be" style="margin-bottom:0">⚡ &nbsp;triage-backend<span class="fa-port">:8000</span></div>
+          <div style="height:10px;width:2px;background:rgba(255,255,255,0.06);margin:0 auto;position:relative;overflow:hidden">
+            <div style="position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(15,212,184,0.4),transparent);animation:flowDown 1.8s linear infinite"></div>
+          </div>
+          <div class="fa-node triage-fe">⚛️ &nbsp;triage-frontend<span class="fa-port">:3000</span></div>
+        </div>
+        <div>
+          <div style="height:14px;width:2px;background:rgba(255,255,255,0.06);margin:0 auto;position:relative;overflow:hidden">
+            <div style="position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(245,166,35,0.6),transparent);animation:flowDown 1.8s linear infinite;animation-delay:0.4s"></div>
+          </div>
+          <div class="fa-node quiz-be" style="margin-bottom:0">🧠 &nbsp;quiz-backend<span class="fa-port">:8001</span></div>
+          <div style="height:10px;width:2px;background:rgba(255,255,255,0.06);margin:0 auto;position:relative;overflow:hidden">
+            <div style="position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(245,166,35,0.4),transparent);animation:flowDown 1.8s linear infinite;animation-delay:0.4s"></div>
+          </div>
+          <div class="fa-node quiz-fe">⚛️ &nbsp;quiz-frontend<span class="fa-port">:3001</span></div>
+        </div>
+      </div>
+
+      <!-- Down to Firebase -->
+      <div style="display:grid;grid-template-columns:1fr 2px 1fr;align-items:center;max-width:600px;margin:0 auto;width:100%;margin-top:0">
+        <div class="fa-split" style="opacity:0.4"></div>
+        <div style="width:2px;height:16px;background:rgba(124,111,247,0.15)"></div>
+        <div class="fa-split" style="opacity:0.4"></div>
+      </div>
+      <div style="height:14px;width:2px;background:rgba(124,111,247,0.12);margin:0 auto;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(to bottom,transparent,rgba(167,139,250,0.7),transparent);animation:flowDown 1.8s linear infinite;animation-delay:0.8s"></div>
+      </div>
+
+      <!-- Firebase -->
+      <div class="fa-row">
+        <div class="fa-node firebase">🔥 &nbsp;Firebase Cloud &nbsp;·&nbsp; Auth + Firestore<span class="fa-port">Cloud</span></div>
+      </div>
+
+      <!-- Bottom badges -->
+      <div class="fa-bottom-row" style="margin-top:20px;flex-wrap:wrap">
+        <div class="fa-badge network">
+          <div class="fa-badge-dot" style="background:var(--green)"></div>
+          supporthub-network — bridge mode — all containers connected
+        </div>
+        <div class="fa-badge k8s-b">
+          ☸️ &nbsp;K3s Kubernetes · 10 manifests
+        </div>
+        <div class="fa-badge tf-b">
+          🏗️ &nbsp;Terraform IaC · 8 resources
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     NEW SECTION 3 — KUBERNETES ORCHESTRATION
+     ═══════════════════════════════════════════════════ -->
+<section id="kubernetes" class="k8s-bg">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">// Kubernetes Orchestration</div>
+      <h2 class="sec-title">Auto-Scaling.<br/>Self-Healing.</h2>
+      <p class="sec-sub">K3s runs all 5 services as Kubernetes pods with health probes, resource limits, and live horizontal scaling.</p>
+    </div>
+
+    <!-- Pod cards -->
+    <div class="k8s-pods-grid reveal">
+      <div class="k8s-pod">
+        <div class="k8s-pod-header">
+          <span class="k8s-pod-icon">🌐</span>
+          <span class="k8s-replica-badge">×1</span>
+        </div>
+        <div class="k8s-pod-name">nginx</div>
+        <div class="k8s-pod-cluster">ClusterIP :8080</div>
+        <div class="k8s-pod-meta">
+          <div class="k8s-pod-meta-row"><span class="kpk">health</span><span class="kpv"><span class="k8s-status-dot"></span>live</span></div>
+          <div class="k8s-pod-meta-row"><span class="kpk">restarts</span><span class="kpv">0</span></div>
+        </div>
+      </div>
+      <div class="k8s-pod">
+        <div class="k8s-pod-header">
+          <span class="k8s-pod-icon">⚡</span>
+          <span class="k8s-replica-badge">×1</span>
+        </div>
+        <div class="k8s-pod-name">triage-backend</div>
+        <div class="k8s-pod-cluster">ClusterIP :8000</div>
+        <div class="k8s-pod-meta">
+          <div class="k8s-pod-meta-row"><span class="kpk">health</span><span class="kpv"><span class="k8s-status-dot"></span>live</span></div>
+          <div class="k8s-pod-meta-row"><span class="kpk">liveness</span><span class="kpv">/health</span></div>
+        </div>
+      </div>
+      <div class="k8s-pod">
+        <div class="k8s-pod-header">
+          <span class="k8s-pod-icon">⚛️</span>
+          <span class="k8s-replica-badge">×1</span>
+        </div>
+        <div class="k8s-pod-name">triage-frontend</div>
+        <div class="k8s-pod-cluster">ClusterIP :3000</div>
+        <div class="k8s-pod-meta">
+          <div class="k8s-pod-meta-row"><span class="kpk">health</span><span class="kpv"><span class="k8s-status-dot"></span>live</span></div>
+          <div class="k8s-pod-meta-row"><span class="kpk">restarts</span><span class="kpv">0</span></div>
+        </div>
+      </div>
+      <div class="k8s-pod">
+        <div class="k8s-pod-header">
+          <span class="k8s-pod-icon">🧠</span>
+          <span class="k8s-replica-badge">×1</span>
+        </div>
+        <div class="k8s-pod-name">quiz-backend</div>
+        <div class="k8s-pod-cluster">ClusterIP :8001</div>
+        <div class="k8s-pod-meta">
+          <div class="k8s-pod-meta-row"><span class="kpk">health</span><span class="kpv"><span class="k8s-status-dot"></span>live</span></div>
+          <div class="k8s-pod-meta-row"><span class="kpk">liveness</span><span class="kpv">/health</span></div>
+        </div>
+      </div>
+      <div class="k8s-pod">
+        <div class="k8s-pod-header">
+          <span class="k8s-pod-icon">⚛️</span>
+          <span class="k8s-replica-badge">×1</span>
+        </div>
+        <div class="k8s-pod-name">quiz-frontend</div>
+        <div class="k8s-pod-cluster">ClusterIP :3001</div>
+        <div class="k8s-pod-meta">
+          <div class="k8s-pod-meta-row"><span class="kpk">health</span><span class="kpv"><span class="k8s-status-dot"></span>live</span></div>
+          <div class="k8s-pod-meta-row"><span class="kpk">restarts</span><span class="kpv">0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scale command block -->
+    <div class="k8s-cmd-block reveal">
+      <div class="k8s-cmd-label">Live Scaling Command</div>
+      <div class="k8s-cmd">
+        <span class="prompt">$ </span><span class="cmd-text">kubectl scale deployment triage-backend <span class="flag">--replicas=3</span></span>
+      </div>
+      <div class="k8s-cmd-output">
+        <span class="k8s-cmd-output-left">deployment.apps/triage-backend scaled &nbsp;→&nbsp; Rolling update in progress...</span>
+        <span class="k8s-cmd-output-right">✓ 3 replicas running</span>
+      </div>
+    </div>
+
+    <!-- K8s feature cards -->
+    <div class="k8s-features-row reveal">
+      <div class="k8s-feat">
+        <div class="k8s-feat-icon">💓</div>
+        <div class="k8s-feat-title">Health Probes</div>
+        <div class="k8s-feat-desc">Liveness and readiness probes on every pod. Automatic restart on failure — zero downtime for end users.</div>
+      </div>
+      <div class="k8s-feat">
+        <div class="k8s-feat-icon">📐</div>
+        <div class="k8s-feat-title">Resource Limits</div>
+        <div class="k8s-feat-desc">CPU and memory requests/limits defined per container to ensure fair resource distribution across the node.</div>
+      </div>
+      <div class="k8s-feat">
+        <div class="k8s-feat-icon">↔️</div>
+        <div class="k8s-feat-title">Horizontal Scaling</div>
+        <div class="k8s-feat-desc">Scale any deployment instantly with <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">kubectl scale</code>. HPA-ready for load-based auto-scaling.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     NEW SECTION 4 — INFRASTRUCTURE AS CODE (TERRAFORM)
+     ═══════════════════════════════════════════════════ -->
+<section id="terraform" class="tf-bg">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">// Infrastructure as Code</div>
+      <h2 class="sec-title">One Command.<br/>Entire AWS Stack.</h2>
+      <p class="sec-sub">terraform apply creates all 8 AWS resources automatically — VPC to EC2 — in under 5 minutes.</p>
+    </div>
+
+    <!-- Resource cards -->
+    <div class="tf-resources-grid reveal">
+      <div class="tf-resource">
+        <div class="tf-resource-type">aws_vpc</div>
+        <div class="tf-resource-name">SupportHub-vpc</div>
+        <div class="tf-resource-detail">10.0.0.0/16 network</div>
+      </div>
+      <div class="tf-resource">
+        <div class="tf-resource-type">aws_internet_gateway</div>
+        <div class="tf-resource-name">SupportHub-igw</div>
+        <div class="tf-resource-detail">Internet access</div>
+      </div>
+      <div class="tf-resource">
+        <div class="tf-resource-type">aws_subnet</div>
+        <div class="tf-resource-name">SupportHub-subnet</div>
+        <div class="tf-resource-detail">ap-south-1a public</div>
+      </div>
+      <div class="tf-resource">
+        <div class="tf-resource-type">aws_route_table</div>
+        <div class="tf-resource-name">SupportHub-rt</div>
+        <div class="tf-resource-detail">Routes traffic</div>
+      </div>
+      <div class="tf-resource">
+        <div class="tf-resource-type">aws_security_group</div>
+        <div class="tf-resource-name">SupportHub-sg</div>
+        <div class="tf-resource-detail">Ports 22,80,8000+</div>
+      </div>
+      <div class="tf-resource">
+        <div class="tf-resource-type">aws_key_pair</div>
+        <div class="tf-resource-name">SupportHub-key</div>
+        <div class="tf-resource-detail">SSH access</div>
+      </div>
+      <div class="tf-resource">
+        <div class="tf-resource-type">aws_instance</div>
+        <div class="tf-resource-name">SupportHub-server</div>
+        <div class="tf-resource-detail">t3.small Ubuntu</div>
+      </div>
+      <div class="tf-resource">
+        <div class="tf-resource-type">aws_eip</div>
+        <div class="tf-resource-name">SupportHub-eip</div>
+        <div class="tf-resource-detail">Permanent public IP</div>
+      </div>
+    </div>
+
+    <!-- Terminal block -->
+    <div class="tf-terminal reveal">
+      <div class="tf-terminal-bar">
+        <div class="tf-dot tf-dot-r"></div>
+        <div class="tf-dot tf-dot-y"></div>
+        <div class="tf-dot tf-dot-g"></div>
+        <span class="tf-terminal-title">terminal — terraform apply</span>
+      </div>
+      <div class="tf-line"><span class="tf-prompt">$ </span><span class="tf-cmd">terraform init</span> &nbsp;<span class="tf-comment"># downloads AWS provider</span></div>
+      <div class="tf-line"><span class="tf-prompt">$ </span><span class="tf-cmd">terraform plan</span> &nbsp;<span class="tf-comment"># previews 8 resources</span></div>
+      <div class="tf-line"><span class="tf-prompt">$ </span><span class="tf-cmd">terraform apply <span class="tf-key">-auto-approve</span></span></div>
+      <div style="margin-top:10px;border-top:1px solid var(--border);padding-top:10px">
+        <div class="tf-line"><span class="tf-success">Apply complete! Resources: 8 added, 0 changed, 0 destroyed.</span></div>
+        <div class="tf-line"><span class="tf-key">supporthub_url</span> = <span class="tf-val">"http://13.206.179.67:8080"</span></div>
+        <div class="tf-line"><span class="tf-key">kubernetes_url</span> = <span class="tf-val">"http://13.206.179.67:6443"</span></div>
+        <div class="tf-line"><span class="tf-key">ssh_command</span> = <span class="tf-val">"ssh -i supporthub-key ubuntu@13.206.179.67"</span></div>
+      </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="tf-steps-row reveal">
+      <div class="tf-step done">✓ terraform init</div>
+      <div class="tf-step-arrow">→</div>
+      <div class="tf-step done">✓ terraform plan</div>
+      <div class="tf-step-arrow">→</div>
+      <div class="tf-step active">⟳ terraform apply</div>
+      <div class="tf-step-arrow">→</div>
+      <div class="tf-step done">✓ Live on AWS 🎉</div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ── CTA ── -->
 <section class="cta-section">
   <div class="container" style="padding:80px 0;text-align:center">
@@ -645,8 +1138,8 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
       <h2 class="cta-title">Choose your module.</h2>
       <p class="cta-sub">Both services are live and ready.<br/>Select a platform to begin.</p>
       <div class="cta-actions">
-        <a href="http://13.206.119.123/triage/" class="btn-primary">⚡ Open TriageAgent</a>
-        <a href="http://13.206.119.123/quiz/" class="btn-amber">🧠 Open QuizBot</a>
+        <a href="http://13.206.179.67:8080/triage/" class="btn-primary">⚡ Open TriageAgent</a>
+        <a href="http://13.206.179.67:8080/quiz/" class="btn-amber">🧠 Open QuizBot</a>
       </div>
     </div>
   </div>
@@ -666,9 +1159,11 @@ footer{position:relative;z-index:1;padding:36px 48px;border-top:1px solid var(--
     &nbsp;·&nbsp; Nginx &nbsp;·&nbsp; Docker &nbsp;·&nbsp; Kubernetes &nbsp;·&nbsp; Terraform
   </div>
   <div class="footer-links">
-    <a href="http://13.206.119.123:8000/docs">Triage API Docs ↗</a>
-    <a href="http://13.206.119.123:8001/docs">Quiz API Docs ↗</a>
-    <a href="https://github.com/anushkakashyap31/TriageAgent">GitHub ↗</a>
+    <a href="http://13.206.179.67:8000/docs">Triage API Docs ↗</a>
+    <a href="http://13.206.179.67:8001/docs">Quiz API Docs ↗</a>
+    <a href="https://github.com/anushkakashyap31/SupportHub"> SupportHub GitHub ↗</a>
+    <a href="https://github.com/anushkakashyap31/TriageAgent"> TriageAgent GitHub ↗</a>
+    <a href="https://github.com/anushkakashyap31/QuizBot"> QuizBot GitHub ↗</a>
   </div>
 </footer>
 

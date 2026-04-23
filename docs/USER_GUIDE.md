@@ -13,7 +13,7 @@ SupportHub is an AI-powered platform for non-profit organizations with two appli
 | **TriageAgent** | Automatically classifies and processes support messages using AI |
 | **QuizBot** | Generates AI-powered quizzes from donor emails to train your staff |
 
-**Live Platform:** `http://13.206.119.123:8080`
+**Live Platform:** `http://13.206.179.67:8080`
 
 ---
 
@@ -21,7 +21,7 @@ SupportHub is an AI-powered platform for non-profit organizations with two appli
 
 ### Access the Platform
 
-1. Open your browser and go to `http://13.206.119.123:8080` (or `http://localhost` if running locally)
+1. Open your browser and go to `http://13.206.179.67:8080` (or `http://localhost` if running locally)
 2. You'll see the **SupportHub landing page** with two options
 3. Click **Launch TriageAgent** or **Launch QuizBot** to begin
 

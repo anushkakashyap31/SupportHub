@@ -26,11 +26,28 @@ spec:
                 secretKeyRef:
                   name: quiz-secrets
                   key: gemini-api-key
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: quiz-secrets
+                  key: secret-key
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: quiz-secrets
                   key: jwt-secret
+            - name: FRONTEND_URL
+              valueFrom:
+                secretKeyRef:
+                  name: quiz-secrets
+                  key: frontend-url
+            - name: FIREBASE_CREDENTIALS_PATH
+              value: "./firebase-credentials.json"
+            - name: FIREBASE_DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: quiz-secrets
+                  key: firebase-database-url
           livenessProbe:
             httpGet:
               path: /health
