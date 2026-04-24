@@ -42,12 +42,16 @@ spec:
                   name: quiz-secrets
                   key: frontend-url
             - name: FIREBASE_CREDENTIALS_PATH
-              value: "./firebase-credentials.json"
+              value: "/app/firebase-credentials.json"
             - name: FIREBASE_DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   name: quiz-secrets
                   key: firebase-database-url
+          volumeMounts:
+            - name: firebase-creds
+              mountPath: /app/firebase-credentials.json
+              subPath: quiz-firebase
           livenessProbe:
             httpGet:
               path: /health
@@ -61,3 +65,7 @@ spec:
             limits:
               memory: "1Gi"
               cpu: "500m"
+      volumes:
+        - name: firebase-creds
+          secret:
+            secretName: firebase-credentials

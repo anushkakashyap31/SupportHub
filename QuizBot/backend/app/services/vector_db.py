@@ -2,10 +2,14 @@ import chromadb
 from chromadb.config import Settings as ChromaSettings
 from sentence_transformers import SentenceTransformer
 from typing import List, Dict
-import faiss
 import numpy as np
 from app.config import settings
 
+try:
+    import faiss
+except ImportError:
+    faiss = None
+    
 class VectorDBService:
     def __init__(self):
         self.db_type = settings.VECTOR_DB_TYPE

@@ -42,7 +42,11 @@ spec:
                   name: triage-secrets
                   key: frontend-url
             - name: FIREBASE_CREDENTIALS_PATH
-              value: "./firebase-credentials.json"
+              value: "/app/firebase-credentials.json"
+          volumeMounts:
+            - name: firebase-creds
+              mountPath: /app/firebase-credentials.json
+              subPath: triage-firebase
           livenessProbe:
             httpGet:
               path: /health
@@ -56,3 +60,7 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+      volumes:
+        - name: firebase-creds
+          secret:
+            secretName: firebase-credentials
