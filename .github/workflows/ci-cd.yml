@@ -15,6 +15,7 @@ env:
   NGINX_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/supporthub-nginx
 
 jobs:
+  # ── JOB 1: TEST ────────────────────────────────────────────
   test:
     name: Run Tests
     runs-on: ubuntu-latest
@@ -41,14 +42,15 @@ jobs:
         run: |
           cd TriageAgent/backend
           python -m py_compile app/main.py
-          echo "TriageAgent syntax OK"
+          echo "✅ TriageAgent syntax OK"
 
       - name: Check QuizBot syntax
         run: |
           cd QuizBot/backend
           python -m py_compile app/main.py
-          echo "QuizBot syntax OK"
+          echo "✅ QuizBot syntax OK"
 
+  # ── JOB 2: BUILD & PUSH ────────────────────────────────────
   build-and-push:
     name: Build and Push Docker Images
     runs-on: ubuntu-latest
@@ -104,8 +106,9 @@ jobs:
           push: true
           tags: ${{ env.NGINX_IMAGE }}:latest
 
+  # ── JOB 3: DEPLOY TO EC2 ───────────────────────────────────
   deploy:
-    name: Deploy to Server
+    name: Deploy to EC2
     runs-on: ubuntu-latest
     needs: build-and-push
     if: github.ref == 'refs/heads/main'
@@ -114,8 +117,54 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy via Docker Compose
-        run: |
-          echo "Deployment step - pulls latest images and restarts services"
-          echo "In production this would SSH into your server and run docker compose up -d"
-          docker compose config
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+
+            # ── 1. Ensure repo is up to date ──────────────────────────
+            REPO_DIR="$HOME/SupportHub"
+            if [ -d "$REPO_DIR" ]; then
+              if git -C "$REPO_DIR" rev-parse --git-dir > /dev/null 2>&1; then
+                cd "$REPO_DIR"
+                git fetch origin main
+                git reset --hard origin/main
+              else
+                rm -rf "$REPO_DIR"
+                git clone https://github.com/anushkakashyap31/SupportHub.git "$REPO_DIR"
+                cd "$REPO_DIR"
+              fi
+            else
+              git clone https://github.com/anushkakashyap31/SupportHub.git "$REPO_DIR"
+              cd "$REPO_DIR"
+            fi
+
+            cd "$REPO_DIR"
+
+            # ── 2. Write root .env (docker-compose reads this) ────────
+            cat > .env << ENVEOF
+            TRIAGE_GEMINI_API_KEY=${{ secrets.TRIAGE_GEMINI_API_KEY }}
+            TRIAGE_JWT_SECRET=${{ secrets.TRIAGE_JWT_SECRET }}
+            TRIAGE_FRONTEND_URL=http://${{ secrets.EC2_HOST }}:8080
+            QUIZ_GEMINI_API_KEY=${{ secrets.QUIZ_GEMINI_API_KEY }}
+            QUIZ_JWT_SECRET=${{ secrets.QUIZ_JWT_SECRET }}
+            QUIZ_FRONTEND_URL=http://${{ secrets.EC2_HOST }}:8080
+            ENVEOF
+
+            # ── 3. Pull latest Docker images from Docker Hub ──────────
+            sudo docker compose pull
+
+            # ── 4. Restart containers with new images ─────────────────
+            sudo docker compose up -d --remove-orphans
+
+            # ── 5. Remove old unused images ───────────────────────────
+            sudo docker image prune -f
+
+            # ── 6. Health check ───────────────────────────────────────
+            sleep 15
+            sudo docker compose ps
+            echo "✅ SupportHub Deployed successfully! and Live at http://${{ secrets.EC2_HOST }}:8080"
