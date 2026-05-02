@@ -167,4 +167,4 @@ jobs:
             # ── 6. Health check ───────────────────────────────────────
             sleep 15
             sudo docker compose ps
-            echo "✅ SupportHub Deployed successfully! and Live at http://${{ secrets.EC2_HOST }}:8080"
+            echo "✅ SupportHub Deployed successfully!! and Live at http://${{ secrets.EC2_HOST }}:8080"
